@@ -200,6 +200,17 @@ export const MODULES: ModuleMeta[] = [
     actionTargets: {"发起交接": "交接中", "确认交接": "已交接", "登记遗留": "有遗留"},
     metrics: ["待交接班次", "已交接班次", "有遗留事项"],
   },
+  {
+    key: "wateroutage",
+    name: "停水通知与影响范围",
+    entity: "停水通知",
+    desc: "给每次停水开一张通知：停水编号、停水时段与影响小区逐个排列展示，发布前影响范围落库，发布后驱动客服诉求清单重排。",
+    fields: ["停水编号", "所属片区", "停水原因", "停水时段", "影响小区数", "通知渠道", "发布时间"],
+    statuses: ["草稿", "已发布", "已结束"],
+    actions: ["发布", "结束"],
+    actionTargets: {"发布": "已发布", "结束": "已结束"},
+    metrics: ["草稿通知", "已发布通知", "已结束通知"],
+  },
 ]
 
 export const MODULE_BY_KEY: Map<string, ModuleMeta> = new Map(

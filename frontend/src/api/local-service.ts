@@ -1,5 +1,6 @@
 import { MODULE_BY_KEY } from '@/data/modules'
 import { allRows, listRows, resetRows, saveRows } from '@/data/local-store'
+import { waterState } from '@/data/water-store'
 import type { ActionResult, EntryRow, ModuleMeta, OverviewResult, PageResult } from '@/data/types'
 
 // 会写进数据的「往回走」动作：命中就把这条记录标成异常态，看板上能一眼看出来。
@@ -86,7 +87,18 @@ export function downloadEntries(key: string): void {
 
 export function loadOverview(): OverviewResult {
   const rows = allRows()
+  const water = waterState()
   const modules = [...MODULE_BY_KEY.values()].map((meta) => {
+    // 停水通知走独立数据层，概览统计从它自己的库里取。
+    if (meta.key === 'wateroutage') {
+      const notices = water.notices
+      return {
+        name: meta.name,
+        created: notices.length,
+        pending: notices.filter((row) => row.status !== '已结束').length,
+        abnormal: notices.filter((row) => row.publishError !== '').length,
+      }
+    }
     const entries = rows[meta.key] ?? []
     return {
       name: meta.name,

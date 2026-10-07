@@ -35,3 +35,24 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .error-text { color: #b42318; }
 .status-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .legend-item { background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+
+/* 停水通知模块弹窗与表单（弹窗目前只在该模块用，样式放全局便于两个页面共用） */
+.modal-mask { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.45); display: flex; align-items: flex-start; justify-content: center; z-index: 50; padding: 32px 16px; overflow-y: auto; }
+.modal { background: #fff; border-radius: 10px; width: 520px; max-width: 100%; padding: 16px 20px; box-shadow: 0 12px 32px rgba(16, 24, 40, 0.2); }
+.modal.wide { width: 860px; }
+.modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.modal-head h3 { margin: 0; font-size: 16px; }
+.modal-foot { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.form-item.span-2 { grid-column: span 2; }
+.form-item span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+.form-item i { color: #b42318; font-style: normal; }
+.form-item input, .supplement-form textarea { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-family: inherit; font-size: 13px; }
+.community-head { display: flex; justify-content: space-between; align-items: center; margin: 6px 0 8px; }
+.community-table input { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 5px 7px; font-family: inherit; font-size: 13px; }
+.sync-toggle, .channel-chip { font-size: 12px; color: var(--muted); display: inline-flex; align-items: center; gap: 4px; }
+.channel-picker { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.form-foot-row { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.form-foot-row .hint { font-size: 12px; color: var(--muted); }
+.link.danger { color: #b42318; }
+.filter-bar select { border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font-size: 13px; }
